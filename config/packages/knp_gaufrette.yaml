@@ -1,0 +1,20 @@
+knp_gaufrette:
+  adapters:
+    pms_adapter:
+      local:
+        directory: '%kernel.project_dir%/public'
+
+#    adapter_aws_s3_images:
+#      aws_s3:
+#        service_id: "werooms.amazon_s3" # ! ! ! Without @ ! ! !
+#        bucket_name: "%amazon_s3.bucket%"
+#        options:
+#          directory: '/room_images'
+#          create: true
+
+  filesystems:
+    pms:
+      adapter: pms_adapter
+#    filesystem_aws_s3_images:
+#      adapter: adapter_aws_s3_images
+  stream_wrapper: ~
