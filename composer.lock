@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "327c082588e73ca70984f413951d49cd",
+    "content-hash": "abbb5f26245c22ff6646a82b82719fb6",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2504,12 +2504,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jacopo89/file-handler-bundle.git",
-                "reference": "672ac5d05ad4f9205e52c6575beb7191b640e4af"
+                "reference": "c03828d5fc3963a859711d882d1383c59ed14805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jacopo89/file-handler-bundle/zipball/672ac5d05ad4f9205e52c6575beb7191b640e4af",
-                "reference": "672ac5d05ad4f9205e52c6575beb7191b640e4af",
+                "url": "https://api.github.com/repos/jacopo89/file-handler-bundle/zipball/c03828d5fc3963a859711d882d1383c59ed14805",
+                "reference": "c03828d5fc3963a859711d882d1383c59ed14805",
                 "shasum": ""
             },
             "require": {
@@ -2606,7 +2606,7 @@
                 "source": "https://github.com/jacopo89/file-handler-bundle/tree/main",
                 "issues": "https://github.com/jacopo89/file-handler-bundle/issues"
             },
-            "time": "2021-12-23T13:17:46+00:00"
+            "time": "2022-10-03T06:58:06+00:00"
         },
         {
             "name": "jacopo89/model-generator-bundle",
@@ -7118,42 +7118,42 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "3.x-dev",
+            "version": "v1.39.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "94be78c8ded1cbaac80f5af46c6bce0b3a570b22"
+                "reference": "f2b99ba44e22a44fcf724affa53b5539b25fde90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/94be78c8ded1cbaac80f5af46c6bce0b3a570b22",
-                "reference": "94be78c8ded1cbaac80f5af46c6bce0b3a570b22",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/f2b99ba44e22a44fcf724affa53b5539b25fde90",
+                "reference": "f2b99ba44e22a44fcf724affa53b5539b25fde90",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^1.2|^2.0",
-                "nikic/php-parser": "^4.0",
+                "nikic/php-parser": "^4.11",
                 "php": ">=7.1.3",
-                "symfony/config": "^3.4|^4.0|^5.0",
-                "symfony/console": "^3.4|^4.0|^5.0",
-                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
-                "symfony/deprecation-contracts": "^2.2",
-                "symfony/filesystem": "^3.4|^4.0|^5.0",
-                "symfony/finder": "^3.4|^4.0|^5.0",
-                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
-                "symfony/http-kernel": "^3.4|^4.0|^5.0"
+                "symfony/config": "^4.4|^5.0|^6.0",
+                "symfony/console": "^4.4|^5.0|^6.0",
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+                "symfony/deprecation-contracts": "^2.2|^3",
+                "symfony/filesystem": "^4.4|^5.0|^6.0",
+                "symfony/finder": "^4.4|^5.0|^6.0",
+                "symfony/framework-bundle": "^4.4|^5.0|^6.0",
+                "symfony/http-kernel": "^4.4|^5.0|^6.0"
             },
             "require-dev": {
-                "composer/semver": "^3.0@dev",
-                "doctrine/doctrine-bundle": "^1.8|^2.0",
+                "composer/semver": "^3.0",
+                "doctrine/doctrine-bundle": "^1.12.3|^2.0",
                 "doctrine/orm": "^2.3",
-                "friendsofphp/php-cs-fixer": "^2.8",
-                "friendsoftwig/twigcs": "^3.1.2",
-                "symfony/http-client": "^4.3|^5.0",
-                "symfony/phpunit-bridge": "^4.3|^5.0",
-                "symfony/process": "^3.4|^4.0|^5.0",
-                "symfony/security-core": "^3.4|^4.0|^5.0",
-                "symfony/yaml": "^3.4|^4.0|^5.0"
+                "symfony/http-client": "^4.4|^5.0|^6.0",
+                "symfony/phpunit-bridge": "^4.4|^5.0|^6.0",
+                "symfony/polyfill-php80": "^1.16.0",
+                "symfony/process": "^4.4|^5.0|^6.0",
+                "symfony/security-core": "^4.4|^5.0|^6.0",
+                "symfony/yaml": "^4.4|^5.0|^6.0",
+                "twig/twig": "^2.0|^3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -7186,7 +7186,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/maker-bundle/issues",
-                "source": "https://github.com/symfony/maker-bundle/tree/3.x"
+                "source": "https://github.com/symfony/maker-bundle/tree/v1.39.0"
             },
             "funding": [
                 {
@@ -7202,7 +7202,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-18T16:28:37+00:00"
+            "time": "2022-04-21T18:16:11+00:00"
         },
         {
             "name": "symfony/messenger",
@@ -10636,85 +10636,6 @@
             "time": "2022-01-02T09:51:59+00:00"
         },
         {
-            "name": "symfony/web-profiler-bundle",
-            "version": "5.3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/web-profiler-bundle.git",
-                "reference": "d0bf5f7ecf8c49594ddc53e5cdb7929f9b401988"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/d0bf5f7ecf8c49594ddc53e5cdb7929f9b401988",
-                "reference": "d0bf5f7ecf8c49594ddc53e5cdb7929f9b401988",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/config": "^4.4|^5.0",
-                "symfony/framework-bundle": "^5.3",
-                "symfony/http-kernel": "^5.3",
-                "symfony/polyfill-php80": "^1.16",
-                "symfony/routing": "^4.4|^5.0",
-                "symfony/twig-bundle": "^4.4|^5.0",
-                "twig/twig": "^2.13|^3.0.4"
-            },
-            "conflict": {
-                "symfony/dependency-injection": "<5.2",
-                "symfony/form": "<4.4",
-                "symfony/messenger": "<4.4"
-            },
-            "require-dev": {
-                "symfony/browser-kit": "^4.4|^5.0",
-                "symfony/console": "^4.4|^5.0",
-                "symfony/css-selector": "^4.4|^5.0",
-                "symfony/stopwatch": "^4.4|^5.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Bundle\\WebProfilerBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides a development tool that gives detailed information about the execution of any request",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/web-profiler-bundle/tree/5.3"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-01-02T09:51:59+00:00"
-        },
-        {
             "name": "symfony/yaml",
             "version": "5.3.x-dev",
             "source": {
@@ -11476,6 +11397,85 @@
                 }
             ],
             "time": "2022-07-28T13:33:28+00:00"
+        },
+        {
+            "name": "symfony/web-profiler-bundle",
+            "version": "5.3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/web-profiler-bundle.git",
+                "reference": "d0bf5f7ecf8c49594ddc53e5cdb7929f9b401988"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/d0bf5f7ecf8c49594ddc53e5cdb7929f9b401988",
+                "reference": "d0bf5f7ecf8c49594ddc53e5cdb7929f9b401988",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/config": "^4.4|^5.0",
+                "symfony/framework-bundle": "^5.3",
+                "symfony/http-kernel": "^5.3",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/routing": "^4.4|^5.0",
+                "symfony/twig-bundle": "^4.4|^5.0",
+                "twig/twig": "^2.13|^3.0.4"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<5.2",
+                "symfony/form": "<4.4",
+                "symfony/messenger": "<4.4"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "^4.4|^5.0",
+                "symfony/console": "^4.4|^5.0",
+                "symfony/css-selector": "^4.4|^5.0",
+                "symfony/stopwatch": "^4.4|^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\WebProfilerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides a development tool that gives detailed information about the execution of any request",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/web-profiler-bundle/tree/5.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-02T09:51:59+00:00"
         }
     ],
     "aliases": [],
@@ -11485,7 +11485,6 @@
         "jacopo89/model-generator-bundle": 20,
         "liip/imagine-bundle": 20,
         "stripe/stripe-php": 10,
-        "symfony/maker-bundle": 20,
         "symfonycasts/verify-email-bundle": 20
     },
     "prefer-stable": false,
