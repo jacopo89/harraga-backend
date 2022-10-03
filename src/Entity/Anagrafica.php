@@ -129,6 +129,12 @@ class Anagrafica
      */
     private $documentoIdentitas;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Mediatore::class, cascade={"persist", "remove"})
+     * @Groups ({"anagrafica"})
+     */
+    private $mediatore;
+
     public function __construct()
     {
         $this->documentoIdentitas = new ArrayCollection();
@@ -357,6 +363,18 @@ class Anagrafica
                 $documentoIdentita->setAnagrafica(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMediatore(): ?Mediatore
+    {
+        return $this->mediatore;
+    }
+
+    public function setMediatore(?Mediatore $mediatore): self
+    {
+        $this->mediatore = $mediatore;
 
         return $this;
     }

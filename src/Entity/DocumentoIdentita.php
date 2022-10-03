@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\DocumentoIdentitaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource ()
  * @ORM\Entity(repositoryClass=DocumentoIdentitaRepository::class)
  */
 class DocumentoIdentita
@@ -26,15 +28,29 @@ class DocumentoIdentita
     private $anagrafica;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $descrizione;
+
+    /**
      * @ORM\OneToOne(targetEntity=Allegato::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups ({"cartella","anagrafica"})
+     * @Groups ({"anagrafica"})
      */
     private $allegato;
+
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     public function getAnagrafica(): ?Anagrafica
@@ -49,12 +65,24 @@ class DocumentoIdentita
         return $this;
     }
 
+    public function getDescrizione(): ?string
+    {
+        return $this->descrizione;
+    }
+
+    public function setDescrizione(?string $descrizione): self
+    {
+        $this->descrizione = $descrizione;
+
+        return $this;
+    }
+
     public function getAllegato(): ?Allegato
     {
         return $this->allegato;
     }
 
-    public function setAllegato(Allegato $allegato): self
+    public function setAllegato(?Allegato $allegato): self
     {
         $this->allegato = $allegato;
 
