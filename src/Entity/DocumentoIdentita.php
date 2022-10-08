@@ -39,6 +39,18 @@ class DocumentoIdentita
      */
     private $allegato;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $tipologia;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $note;
+
 
     public function getId(): ?int
     {
@@ -85,6 +97,30 @@ class DocumentoIdentita
     public function setAllegato(?Allegato $allegato): self
     {
         $this->allegato = $allegato;
+
+        return $this;
+    }
+
+    public function getTipologia(): ?string
+    {
+        return $this->tipologia;
+    }
+
+    public function setTipologia(?string $tipologia): self
+    {
+        $this->tipologia = $tipologia;
+
+        return $this;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function setNote(?string $note): self
+    {
+        $this->note = $note;
 
         return $this;
     }

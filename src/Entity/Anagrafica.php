@@ -135,9 +135,64 @@ class Anagrafica
      */
     private $mediatore;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $telefono;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $unitaOperativa;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $dataAssegnazioneUO;
+
+    /**
+     * @ORM\OneToOne(targetEntity=PolizzaAssicurativa::class, cascade={"persist", "remove"})
+     * @Groups ({"anagrafica"})
+     */
+    private $polizzaAssicurativa;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Tutore::class, cascade={"persist", "remove"})
+     * @Groups ({"anagrafica"})
+     */
+    private $tutore;
+
+    /**
+     * @ORM\OneToOne(targetEntity=AssistenteSociale::class, cascade={"persist", "remove"})
+     * @Groups ({"anagrafica"})
+     */
+    private $assistenteSociale;
+
+    /**
+     * @ORM\OneToOne(targetEntity=DocumentiPossesso::class, cascade={"persist", "remove"})
+     * @Groups ({"anagrafica"})
+     */
+    private $documentiPossesso;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Domicilio::class, mappedBy="anagrafica", orphanRemoval=true)
+     * @Groups ({"anagrafica"})
+     */
+    private $domicilios;
+
     public function __construct()
     {
         $this->documentoIdentitas = new ArrayCollection();
+        $this->domicilios = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -375,6 +430,132 @@ class Anagrafica
     public function setMediatore(?Mediatore $mediatore): self
     {
         $this->mediatore = $mediatore;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTelefono(): ?string
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono(?string $telefono): self
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    public function getUnitaOperativa(): ?string
+    {
+        return $this->unitaOperativa;
+    }
+
+    public function setUnitaOperativa(?string $unitaOperativa): self
+    {
+        $this->unitaOperativa = $unitaOperativa;
+
+        return $this;
+    }
+
+    public function getDataAssegnazioneUO(): ?string
+    {
+        return $this->dataAssegnazioneUO;
+    }
+
+    public function setDataAssegnazioneUO(?string $dataAssegnazioneUO): self
+    {
+        $this->dataAssegnazioneUO = $dataAssegnazioneUO;
+
+        return $this;
+    }
+
+    public function getPolizzaAssicurativa(): ?PolizzaAssicurativa
+    {
+        return $this->polizzaAssicurativa;
+    }
+
+    public function setPolizzaAssicurativa(?PolizzaAssicurativa $polizzaAssicurativa): self
+    {
+        $this->polizzaAssicurativa = $polizzaAssicurativa;
+
+        return $this;
+    }
+
+    public function getTutore(): ?Tutore
+    {
+        return $this->tutore;
+    }
+
+    public function setTutore(?Tutore $tutore): self
+    {
+        $this->tutore = $tutore;
+
+        return $this;
+    }
+
+    public function getAssistenteSociale(): ?AssistenteSociale
+    {
+        return $this->assistenteSociale;
+    }
+
+    public function setAssistenteSociale(?AssistenteSociale $assistenteSociale): self
+    {
+        $this->assistenteSociale = $assistenteSociale;
+
+        return $this;
+    }
+
+    public function getDocumentiPossesso(): ?DocumentiPossesso
+    {
+        return $this->documentiPossesso;
+    }
+
+    public function setDocumentiPossesso(?DocumentiPossesso $documentiPossesso): self
+    {
+        $this->documentiPossesso = $documentiPossesso;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Domicilio>
+     */
+    public function getDomicilios(): Collection
+    {
+        return $this->domicilios;
+    }
+
+    public function addDomicilio(Domicilio $domicilio): self
+    {
+        if (!$this->domicilios->contains($domicilio)) {
+            $this->domicilios[] = $domicilio;
+            $domicilio->setAnagrafica($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDomicilio(Domicilio $domicilio): self
+    {
+        if ($this->domicilios->removeElement($domicilio)) {
+            // set the owning side to null (unless already changed)
+            if ($domicilio->getAnagrafica() === $this) {
+                $domicilio->setAnagrafica(null);
+            }
+        }
 
         return $this;
     }

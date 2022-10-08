@@ -3,15 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\MediatoreRepository;
+use App\Repository\AssistenteSocialeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass=MediatoreRepository::class)
+ * @ORM\Entity(repositoryClass=AssistenteSocialeRepository::class)
  */
-class Mediatore
+class AssistenteSociale
 {
     /**
      * @ORM\Id
@@ -22,23 +22,26 @@ class Mediatore
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups ({"anagrafica"})
      */
     private $nome;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
      */
     private $cognome;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
      */
     private $telefono;
 
@@ -52,7 +55,7 @@ class Mediatore
         return $this->nome;
     }
 
-    public function setNome(string $nome): self
+    public function setNome(?string $nome): self
     {
         $this->nome = $nome;
 
