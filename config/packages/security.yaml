@@ -1,15 +1,17 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Entity\Utente:
             algorithm: auto
+
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Utente
                 property: email
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -43,6 +45,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/(.*), roles: !php/const App\Model\UserRoles::AUTHENTICATED }
-        - { path: ^/api/resources/listing, roles: !php/const App\Model\UserRoles::GUEST }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

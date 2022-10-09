@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\CartellaSocialeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -29,6 +31,7 @@ class CartellaSociale
         $this->istruzione = new Istruzione();
         $this->lavoro = new Lavoro();
         $this->socialita = new Socialita();
+        $this->utenteCartellaSociales = new ArrayCollection();
     }
 
     /**
@@ -86,6 +89,11 @@ class CartellaSociale
      * @ORM\OneToOne(targetEntity=Socialita::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      */
     private Socialita $socialita;
+
+    /**
+     * @ORM\OneToMany(targetEntity=UtenteCartellaSociale::class, mappedBy="cartellaSociale")
+     */
+    private $utenteCartellaSociales;
 
     public function getId(): ?int
     {
@@ -241,6 +249,36 @@ class CartellaSociale
         }
 
         $this->socialita = $socialita;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UtenteCartellaSociale>
+     */
+    public function getUtenteCartellaSociales(): Collection
+    {
+        return $this->utenteCartellaSociales;
+    }
+
+    public function addUtenteCartellaSociale(UtenteCartellaSociale $utenteCartellaSociale): self
+    {
+        if (!$this->utenteCartellaSociales->contains($utenteCartellaSociale)) {
+            $this->utenteCartellaSociales[] = $utenteCartellaSociale;
+            $utenteCartellaSociale->setCartellaSociale($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUtenteCartellaSociale(UtenteCartellaSociale $utenteCartellaSociale): self
+    {
+        if ($this->utenteCartellaSociales->removeElement($utenteCartellaSociale)) {
+            // set the owning side to null (unless already changed)
+            if ($utenteCartellaSociale->getCartellaSociale() === $this) {
+                $utenteCartellaSociale->setCartellaSociale(null);
+            }
+        }
 
         return $this;
     }
