@@ -22,6 +22,7 @@ class CartellaSociale
     {
         $this->anagrafica = new Anagrafica();
         $this->amministrativa = new Amministrativa();
+        $this->storia = new Storia();
     }
 
     /**
@@ -44,6 +45,11 @@ class CartellaSociale
      * @ApiSubresource
      */
     private Amministrativa $amministrativa;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Storia::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     */
+    private Storia $storia;
 
     public function getId(): ?int
     {
@@ -80,6 +86,23 @@ class CartellaSociale
         }
 
         $this->amministrativa = $amministrativa;
+
+        return $this;
+    }
+
+    public function getStoria(): ?Storia
+    {
+        return $this->storia;
+    }
+
+    public function setStoria(Storia $storia): self
+    {
+        // set the owning side of the relation if necessary
+        if ($storia->getCartellaSociale() !== $this) {
+            $storia->setCartellaSociale($this);
+        }
+
+        $this->storia = $storia;
 
         return $this;
     }
