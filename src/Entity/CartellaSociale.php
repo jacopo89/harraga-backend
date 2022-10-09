@@ -23,6 +23,7 @@ class CartellaSociale
         $this->anagrafica = new Anagrafica();
         $this->amministrativa = new Amministrativa();
         $this->storia = new Storia();
+        $this->sanitaria = new Sanitaria();
     }
 
     /**
@@ -50,6 +51,11 @@ class CartellaSociale
      * @ORM\OneToOne(targetEntity=Storia::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      */
     private Storia $storia;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Sanitaria::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     */
+    private Sanitaria $sanitaria;
 
     public function getId(): ?int
     {
@@ -103,6 +109,23 @@ class CartellaSociale
         }
 
         $this->storia = $storia;
+
+        return $this;
+    }
+
+    public function getSanitaria(): ?Sanitaria
+    {
+        return $this->sanitaria;
+    }
+
+    public function setSanitaria(Sanitaria $sanitaria): self
+    {
+        // set the owning side of the relation if necessary
+        if ($sanitaria->getCartellaSociale() !== $this) {
+            $sanitaria->setCartellaSociale($this);
+        }
+
+        $this->sanitaria = $sanitaria;
 
         return $this;
     }
