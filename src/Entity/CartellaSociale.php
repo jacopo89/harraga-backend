@@ -28,6 +28,7 @@ class CartellaSociale
         $this->desideri = new Desideri();
         $this->istruzione = new Istruzione();
         $this->lavoro = new Lavoro();
+        $this->socialita = new Socialita();
     }
 
     /**
@@ -69,17 +70,22 @@ class CartellaSociale
     /**
      * @ORM\OneToOne(targetEntity=Desideri::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      */
-    private $desideri;
+    private Desideri $desideri;
 
     /**
      * @ORM\OneToOne(targetEntity=Istruzione::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      */
-    private $istruzione;
+    private Istruzione $istruzione;
 
     /**
      * @ORM\OneToOne(targetEntity=Lavoro::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      */
-    private $lavoro;
+    private Lavoro $lavoro;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Socialita::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     */
+    private Socialita $socialita;
 
     public function getId(): ?int
     {
@@ -218,6 +224,23 @@ class CartellaSociale
         }
 
         $this->lavoro = $lavoro;
+
+        return $this;
+    }
+
+    public function getSocialita(): ?Socialita
+    {
+        return $this->socialita;
+    }
+
+    public function setSocialita(Socialita $socialita): self
+    {
+        // set the owning side of the relation if necessary
+        if ($socialita->getCartellaSociale() !== $this) {
+            $socialita->setCartellaSociale($this);
+        }
+
+        $this->socialita = $socialita;
 
         return $this;
     }
