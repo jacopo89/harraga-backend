@@ -25,6 +25,7 @@ class CartellaSociale
         $this->storia = new Storia();
         $this->sanitaria = new Sanitaria();
         $this->competenze = new Competenze();
+        $this->desideri = new Desideri();
     }
 
     /**
@@ -62,6 +63,11 @@ class CartellaSociale
      * @ORM\OneToOne(targetEntity=Competenze::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      */
     private Competenze $competenze;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Desideri::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     */
+    private $desideri;
 
     public function getId(): ?int
     {
@@ -149,6 +155,23 @@ class CartellaSociale
         }
 
         $this->competenze = $competenze;
+
+        return $this;
+    }
+
+    public function getDesideri(): ?Desideri
+    {
+        return $this->desideri;
+    }
+
+    public function setDesideri(Desideri $desideri): self
+    {
+        // set the owning side of the relation if necessary
+        if ($desideri->getCartellaSociale() !== $this) {
+            $desideri->setCartellaSociale($this);
+        }
+
+        $this->desideri = $desideri;
 
         return $this;
     }
