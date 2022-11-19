@@ -78,6 +78,13 @@ class Competenze
         $this->patentes = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Competenze
+    {
+        $competenze = new self();
+        $competenze->setCartellaSociale($cartellaSociale);
+        return $competenze;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

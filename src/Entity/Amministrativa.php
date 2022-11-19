@@ -118,6 +118,13 @@ class Amministrativa
         $this->proceduraLegales = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Amministrativa
+    {
+        $amministrativa = new self();
+        $amministrativa->setCartellaSociale($cartellaSociale);
+        return $amministrativa;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

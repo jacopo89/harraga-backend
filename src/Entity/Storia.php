@@ -175,6 +175,13 @@ class Storia
         $this->adoziones = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Storia
+    {
+        $storia = new self();
+        $storia->setCartellaSociale($cartellaSociale);
+        return $storia;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

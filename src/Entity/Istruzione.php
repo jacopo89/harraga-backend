@@ -57,6 +57,13 @@ class Istruzione
         $this->percorsoIstruzioneFormazioneItalias = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Istruzione
+    {
+        $istruzione = new self();
+        $istruzione->setCartellaSociale($cartellaSociale);
+        return $istruzione;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

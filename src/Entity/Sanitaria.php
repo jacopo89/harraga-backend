@@ -76,6 +76,13 @@ class Sanitaria
         $this->visitas = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Sanitaria
+    {
+        $sanitaria = new self();
+        $sanitaria->setCartellaSociale($cartellaSociale);
+        return $sanitaria;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

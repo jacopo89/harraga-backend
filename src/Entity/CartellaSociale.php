@@ -23,14 +23,14 @@ class CartellaSociale
     public function __construct()
     {
         $this->anagrafica = new Anagrafica();
-        $this->amministrativa = new Amministrativa();
-        $this->storia = new Storia();
-        $this->sanitaria = new Sanitaria();
-        $this->competenze = new Competenze();
-        $this->desideri = new Desideri();
-        $this->istruzione = new Istruzione();
-        $this->lavoro = new Lavoro();
-        $this->socialita = new Socialita();
+        $this->amministrativa = Amministrativa::fromCartellaSociale($this);
+        $this->storia = Storia::fromCartellaSociale($this);
+        $this->sanitaria = Sanitaria::fromCartellaSociale($this);
+        $this->competenze = Competenze::fromCartellaSociale($this);
+        $this->desideri = Desideri::fromCartellaSociale($this);
+        $this->istruzione =  Istruzione::fromCartellaSociale($this);
+        $this->lavoro = Lavoro::fromCartellaSociale($this);
+        $this->socialita = Socialita::fromCartellaSociale($this);
         $this->utenteCartellaSociales = new ArrayCollection();
     }
 

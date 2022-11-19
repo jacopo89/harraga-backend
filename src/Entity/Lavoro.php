@@ -43,6 +43,13 @@ class Lavoro
         $this->esperienzaLavorativas = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Lavoro
+    {
+        $lavoro = new self();
+        $lavoro->setCartellaSociale($cartellaSociale);
+        return $lavoro;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

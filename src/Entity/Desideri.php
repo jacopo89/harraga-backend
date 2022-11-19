@@ -42,6 +42,13 @@ class Desideri
      */
     private $ascoltoMinore;
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Desideri
+    {
+        $desideri = new self();
+        $desideri->setCartellaSociale($cartellaSociale);
+        return $desideri;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

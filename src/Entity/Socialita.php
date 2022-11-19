@@ -64,6 +64,13 @@ class Socialita
         $this->associaziones = new ArrayCollection();
     }
 
+    public static function fromCartellaSociale(CartellaSociale $cartellaSociale): Socialita
+    {
+        $socialita = new self();
+        $socialita->setCartellaSociale($cartellaSociale);
+        return $socialita;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
