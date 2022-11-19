@@ -30,6 +30,8 @@ class Anagrafica
     /**
      * @ORM\OneToOne(targetEntity=CartellaSociale::class, inversedBy="anagrafica")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ({"anagrafica"})
+     *
      */
     private $cartellaSociale;
 
