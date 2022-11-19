@@ -9,10 +9,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UtenteRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"utente"}, "skip_null_values" = false},
+ *     denormalizationContext={"groups"={"utente"}},
+ * )
  */
 class Utente implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -20,16 +24,19 @@ class Utente implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"utente"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups ({"utente"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups ({"utente"})
      */
     private $roles = [];
 
@@ -43,6 +50,24 @@ class Utente implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=UtenteCartellaSociale::class, mappedBy="utente")
      */
     private $utenteCartellaSociales;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups ({"utente"})
+     */
+    private $nome;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups ({"utente"})
+     */
+    private $cognome;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"utente"})
+     */
+    private $telefono;
 
     public function __construct()
     {
@@ -164,6 +189,42 @@ class Utente implements UserInterface, PasswordAuthenticatedUserInterface
                 $utenteCartellaSociale->setUtente(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNome(): ?string
+    {
+        return $this->nome;
+    }
+
+    public function setNome(string $nome): self
+    {
+        $this->nome = $nome;
+
+        return $this;
+    }
+
+    public function getCognome(): ?string
+    {
+        return $this->cognome;
+    }
+
+    public function setCognome(string $cognome): self
+    {
+        $this->cognome = $cognome;
+
+        return $this;
+    }
+
+    public function getTelefono(): ?string
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono(?string $telefono): self
+    {
+        $this->telefono = $telefono;
 
         return $this;
     }

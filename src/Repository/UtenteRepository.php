@@ -92,4 +92,9 @@ class UtenteRepository extends ServiceEntityRepository implements PasswordUpgrad
         ;
     }
     */
+    public function save(Utente $utente)
+    {
+        $this->_em->persist($utente);
+        $this->_em->flush();
+    }
 }
