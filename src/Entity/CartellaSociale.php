@@ -95,6 +95,11 @@ class CartellaSociale
      */
     private $utenteCartellaSociales;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Penale::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     */
+    private $penale;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -279,6 +284,23 @@ class CartellaSociale
                 $utenteCartellaSociale->setCartellaSociale(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPenale(): ?Penale
+    {
+        return $this->penale;
+    }
+
+    public function setPenale(Penale $penale): self
+    {
+        // set the owning side of the relation if necessary
+        if ($penale->getCartellaSociale() !== $this) {
+            $penale->setCartellaSociale($this);
+        }
+
+        $this->penale = $penale;
 
         return $this;
     }

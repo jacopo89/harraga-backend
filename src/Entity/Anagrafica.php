@@ -186,7 +186,7 @@ class Anagrafica
     private $documentiPossesso;
 
     /**
-     * @ORM\OneToMany(targetEntity=Domicilio::class, mappedBy="anagrafica", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Domicilio::class, mappedBy="anagrafica", orphanRemoval=true,cascade={"persist", "remove"})
      * @Groups ({"anagrafica"})
      */
     private $domicilios;
