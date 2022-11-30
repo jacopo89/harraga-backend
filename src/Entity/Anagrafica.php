@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\AnagraficaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  *
@@ -16,6 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"anagrafica"}},
  * )
  * @ORM\Entity(repositoryClass=AnagraficaRepository::class)
+ *
  */
 class Anagrafica
 {
@@ -96,7 +99,7 @@ class Anagrafica
     private $dataNascitaPrimaIdentificazione;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date", length=255, nullable=true)
      * @Groups ({"cartella","anagrafica"})
      */
     private $dataNascitaCorretta;
@@ -334,12 +337,12 @@ class Anagrafica
         return $this;
     }
 
-    public function getDataNascitaCorretta(): ?string
+    public function getDataNascitaCorretta(): ?\DateTimeInterface
     {
         return $this->dataNascitaCorretta;
     }
 
-    public function setDataNascitaCorretta(?string $dataNascitaCorretta): self
+    public function setDataNascitaCorretta(?\DateTimeInterface $dataNascitaCorretta): self
     {
         $this->dataNascitaCorretta = $dataNascitaCorretta;
 

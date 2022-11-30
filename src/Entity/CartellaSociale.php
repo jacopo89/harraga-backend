@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\CartellaSocialeRepository;
@@ -9,6 +10,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * @ApiResource(
@@ -16,6 +20,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"cartella"}},
  * )
  * @ORM\Entity(repositoryClass=CartellaSocialeRepository::class)
+ * @ApiFilter(SearchFilter::class, properties={"anagrafica.nome": "partial","anagrafica.cognome": "partial","anagrafica.paeseOrigine": "partial"})
+ * @ApiFilter(BooleanFilter::class, properties={"anagrafica.italiano"})
+ * @ApiFilter(DateFilter::class, properties={"anagrafica.dataNascitaCorretta"})
+ *
  */
 class CartellaSociale
 {
@@ -31,6 +39,7 @@ class CartellaSociale
         $this->istruzione =  Istruzione::fromCartellaSociale($this);
         $this->lavoro = Lavoro::fromCartellaSociale($this);
         $this->socialita = Socialita::fromCartellaSociale($this);
+        $this->penale = Penale::fromCartellaSociale($this);
         $this->utenteCartellaSociales = new ArrayCollection();
     }
 
@@ -57,36 +66,43 @@ class CartellaSociale
 
     /**
      * @ORM\OneToOne(targetEntity=Storia::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Storia $storia;
 
     /**
      * @ORM\OneToOne(targetEntity=Sanitaria::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Sanitaria $sanitaria;
 
     /**
      * @ORM\OneToOne(targetEntity=Competenze::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Competenze $competenze;
 
     /**
      * @ORM\OneToOne(targetEntity=Desideri::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Desideri $desideri;
 
     /**
      * @ORM\OneToOne(targetEntity=Istruzione::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Istruzione $istruzione;
 
     /**
      * @ORM\OneToOne(targetEntity=Lavoro::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Lavoro $lavoro;
 
     /**
      * @ORM\OneToOne(targetEntity=Socialita::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
     private Socialita $socialita;
 
@@ -97,8 +113,9 @@ class CartellaSociale
 
     /**
      * @ORM\OneToOne(targetEntity=Penale::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
+     * @ApiSubresource
      */
-    private $penale;
+    private Penale $penale;
 
     public function getId(): ?int
     {

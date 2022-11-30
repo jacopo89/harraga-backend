@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProceduraPenaleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -16,43 +17,57 @@ class ProceduraPenale
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"penale"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"penale"})
      */
     private $statoProcedimento;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"penale"})
      */
     private $nomeAssistenteSociale;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"penale"})
      */
     private $cognomeAssistenteSociale;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"penale"})
      */
     private $emailAssistenteSociale;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"penale"})
      */
     private $telefonoAssistenteSociale;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"penale"})
      */
     private $peiDescrizione;
 
     /**
      * @ORM\OneToOne(targetEntity=Allegato::class, cascade={"persist", "remove"})
+     * @Groups ({"penale"})
      */
     private $peiAllegato;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Penale::class, inversedBy="procedurePenali")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $penale;
 
     public function getId(): ?int
     {
@@ -139,6 +154,18 @@ class ProceduraPenale
     public function setPeiAllegato(?Allegato $peiAllegato): self
     {
         $this->peiAllegato = $peiAllegato;
+
+        return $this;
+    }
+
+    public function getPenale(): ?Penale
+    {
+        return $this->penale;
+    }
+
+    public function setPenale(?Penale $penale): self
+    {
+        $this->penale = $penale;
 
         return $this;
     }
