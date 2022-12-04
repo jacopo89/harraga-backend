@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\DelegaAmministrativaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -16,26 +17,31 @@ class DelegaAmministrativa
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"amministrativa"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"amministrativa"})
      */
     private $protocollo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"amministrativa"})
      */
     private $richiestaUONI;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"amministrativa"})
      */
     private $data;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"amministrativa"})
      */
     private $altro;
 

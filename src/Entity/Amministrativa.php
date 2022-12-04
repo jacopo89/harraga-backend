@@ -111,6 +111,12 @@ class Amministrativa
      */
     private $proceduraLegales;
 
+    /**
+     * @ORM\OneToOne(targetEntity=DelegaAmministrativa::class, cascade={"persist", "remove"})
+     * @Groups({"amministrativa"})
+     */
+    private $delegaAmministrativa;
+
     public function __construct()
     {
         $this->permessoSoggiornos = new ArrayCollection();
@@ -367,6 +373,18 @@ class Amministrativa
                 $proceduraLegale->setAmministrativa(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDelegaAmministrativa(): ?DelegaAmministrativa
+    {
+        return $this->delegaAmministrativa;
+    }
+
+    public function setDelegaAmministrativa(?DelegaAmministrativa $delegaAmministrativa): self
+    {
+        $this->delegaAmministrativa = $delegaAmministrativa;
 
         return $this;
     }

@@ -46,7 +46,7 @@ class Appuntamento
     private $esiti;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ProceduraLegale::class, inversedBy="appuntamenti")
+     * @ORM\ManyToOne(targetEntity=ProceduraLegale::class, inversedBy="appuntamentos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $proceduraLegale;

@@ -33,7 +33,7 @@ class ProceduraLegale
      * @ORM\OneToMany(targetEntity=Appuntamento::class, mappedBy="proceduraLegale", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"amministrativa"})
      */
-    private $appuntamenti;
+    private $appuntamentos;
 
     /**
      * @ORM\OneToMany(targetEntity=RicorsoAmministrativo::class, mappedBy="proceduraLegale", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -49,7 +49,7 @@ class ProceduraLegale
 
     public function __construct()
     {
-        $this->appuntamenti = new ArrayCollection();
+        $this->appuntamentos = new ArrayCollection();
         $this->ricorsiAmministrativi = new ArrayCollection();
     }
 
@@ -73,24 +73,24 @@ class ProceduraLegale
     /**
      * @return Collection<int, Appuntamento>
      */
-    public function getAppuntamenti(): Collection
+    public function getAppuntamentos(): Collection
     {
-        return $this->appuntamenti;
+        return $this->appuntamentos;
     }
 
-    public function addAPpuntamenti(Appuntamento $appuntamenti): self
+    public function addAppuntamento(Appuntamento $appuntamenti): self
     {
-        if (!$this->appuntamenti->contains($appuntamenti)) {
-            $this->appuntamenti[] = $appuntamenti;
+        if (!$this->appuntamentos->contains($appuntamenti)) {
+            $this->appuntamentos[] = $appuntamenti;
             $appuntamenti->setProceduraLegale($this);
         }
 
         return $this;
     }
 
-    public function removeAPpuntamenti(Appuntamento $appuntamenti): self
+    public function removeAppuntamento(Appuntamento $appuntamenti): self
     {
-        if ($this->appuntamenti->removeElement($appuntamenti)) {
+        if ($this->appuntamentos->removeElement($appuntamenti)) {
             // set the owning side to null (unless already changed)
             if ($appuntamenti->getProceduraLegale() === $this) {
                 $appuntamenti->setProceduraLegale(null);
