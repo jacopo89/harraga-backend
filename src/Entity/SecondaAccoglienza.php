@@ -69,12 +69,6 @@ class SecondaAccoglienza
      */
     private $dataUscita;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Storia::class, inversedBy="secondaAccoglienza", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $storia;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -172,18 +166,6 @@ class SecondaAccoglienza
     public function setDataUscita(?string $dataUscita): self
     {
         $this->dataUscita = $dataUscita;
-
-        return $this;
-    }
-
-    public function getStoria(): ?Storia
-    {
-        return $this->storia;
-    }
-
-    public function setStoria(Storia $storia): self
-    {
-        $this->storia = $storia;
 
         return $this;
     }

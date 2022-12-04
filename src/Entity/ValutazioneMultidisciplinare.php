@@ -33,11 +33,6 @@ class ValutazioneMultidisciplinare
      */
     private $valutazione;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Storia::class, inversedBy="valutazioneMultidisciplinare", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $storia;
 
     public function getId(): ?int
     {
@@ -64,18 +59,6 @@ class ValutazioneMultidisciplinare
     public function setValutazione(?string $valutazione): self
     {
         $this->valutazione = $valutazione;
-
-        return $this;
-    }
-
-    public function getStoria(): ?Storia
-    {
-        return $this->storia;
-    }
-
-    public function setStoria(Storia $storia): self
-    {
-        $this->storia = $storia;
 
         return $this;
     }

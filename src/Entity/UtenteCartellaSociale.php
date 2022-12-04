@@ -3,11 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\UtenteCartellaSocialeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"cartella_sociale_utente"}}
+ * )
  * @ORM\Entity(repositoryClass=UtenteCartellaSocialeRepository::class)
  */
 class UtenteCartellaSociale
@@ -16,6 +20,7 @@ class UtenteCartellaSociale
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("cartella_sociale_utente")
      */
     private $id;
 
@@ -28,6 +33,7 @@ class UtenteCartellaSociale
     /**
      * @ORM\ManyToOne(targetEntity=CartellaSociale::class, inversedBy="utenteCartellaSociales")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ({"cartella_sociale_utente"})
      */
     private $cartellaSociale;
 

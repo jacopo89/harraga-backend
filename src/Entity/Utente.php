@@ -15,6 +15,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=UtenteRepository::class)
  * @ApiResource(
+ *     subresourceOperations={
+ *     "utente_cartella_sociales_get_subresource"={
+ *          "method"="GET",
+ *          "normalization_context"={"groups"={"foobar"}}
+ *          }
+ *     },
  *     normalizationContext={"groups"={"utente"}, "skip_null_values" = false},
  *     denormalizationContext={"groups"={"utente"}},
  * )
@@ -49,7 +55,8 @@ class Utente implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=UtenteCartellaSociale::class, mappedBy="utente")
-     * @ApiSubresource()
+     * @ApiSubresource
+     *
      */
     private $utenteCartellaSociales;
 

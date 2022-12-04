@@ -18,7 +18,7 @@ class Allegato extends AbstractFile
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups ({"anagrafica","file:read"})
+     * @Groups ({"anagrafica", "amministrativa", "storia", "sanitaria", "file:read"})
      */
     protected int $id;
 

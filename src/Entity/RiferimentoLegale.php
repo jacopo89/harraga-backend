@@ -51,12 +51,6 @@ class RiferimentoLegale
      */
     private $telefono;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Amministrativa::class, inversedBy="riferimentoLegale", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $amministrativa;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -118,18 +112,6 @@ class RiferimentoLegale
     public function setTelefono(?string $telefono): self
     {
         $this->telefono = $telefono;
-
-        return $this;
-    }
-
-    public function getAmministrativa(): ?Amministrativa
-    {
-        return $this->amministrativa;
-    }
-
-    public function setAmministrativa(Amministrativa $amministrativa): self
-    {
-        $this->amministrativa = $amministrativa;
 
         return $this;
     }

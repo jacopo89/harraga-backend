@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\RevocaTutelaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource
  * @ORM\Entity(repositoryClass=RevocaTutelaRepository::class)
  */
 class RevocaTutela
@@ -30,12 +32,6 @@ class RevocaTutela
      * @Groups({"amministrativa"})
      */
     private $allegato;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Amministrativa::class, inversedBy="revocaTutela", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $amministrativa;
 
     public function getId(): ?int
     {
@@ -62,18 +58,6 @@ class RevocaTutela
     public function setAllegato(?Allegato $allegato): self
     {
         $this->allegato = $allegato;
-
-        return $this;
-    }
-
-    public function getAmministrativa(): ?Amministrativa
-    {
-        return $this->amministrativa;
-    }
-
-    public function setAmministrativa(Amministrativa $amministrativa): self
-    {
-        $this->amministrativa = $amministrativa;
 
         return $this;
     }

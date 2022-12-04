@@ -29,16 +29,19 @@ class Mediatore
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
      */
     private $cognome;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups ({"anagrafica"})
      */
     private $telefono;
 

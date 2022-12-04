@@ -51,19 +51,19 @@ class Storia
     private $percorsoMigratorios;
 
     /**
-     * @ORM\OneToOne(targetEntity=Hotspot::class, mappedBy="storia", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Hotspot::class, cascade={"persist", "remove"})
      * @Groups ({"storia"})
      */
     private $hotspot;
 
     /**
-     * @ORM\OneToOne(targetEntity=CPA::class, mappedBy="storia", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=CPA::class, cascade={"persist", "remove"})
      * @Groups ({"storia"})
      */
     private $cPA;
 
     /**
-     * @ORM\OneToOne(targetEntity=SecondaAccoglienza::class, mappedBy="storia", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=SecondaAccoglienza::class, cascade={"persist", "remove"})
      * @Groups ({"storia"})
      */
     private $secondaAccoglienza;
@@ -99,7 +99,7 @@ class Storia
     private $adoziones;
 
     /**
-     * @ORM\OneToOne(targetEntity=ValutazioneMultidisciplinare::class, mappedBy="storia", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=ValutazioneMultidisciplinare::class, cascade={"persist", "remove"})
      * @Groups ({"storia"})
      */
     private $valutazioneMultidisciplinare;
@@ -276,13 +276,9 @@ class Storia
         return $this->hotspot;
     }
 
-    public function setHotspot(Hotspot $hotspot): self
+    public function setHotspot(?Hotspot $hotspot): self
     {
         // set the owning side of the relation if necessary
-        if ($hotspot->getStoria() !== $this) {
-            $hotspot->setStoria($this);
-        }
-
         $this->hotspot = $hotspot;
 
         return $this;
@@ -293,13 +289,9 @@ class Storia
         return $this->cPA;
     }
 
-    public function setCPA(CPA $cPA): self
+    public function setCPA(?CPA $cPA): self
     {
         // set the owning side of the relation if necessary
-        if ($cPA->getStoria() !== $this) {
-            $cPA->setStoria($this);
-        }
-
         $this->cPA = $cPA;
 
         return $this;
@@ -310,12 +302,9 @@ class Storia
         return $this->secondaAccoglienza;
     }
 
-    public function setSecondaAccoglienza(SecondaAccoglienza $secondaAccoglienza): self
+    public function setSecondaAccoglienza(?SecondaAccoglienza $secondaAccoglienza): self
     {
         // set the owning side of the relation if necessary
-        if ($secondaAccoglienza->getStoria() !== $this) {
-            $secondaAccoglienza->setStoria($this);
-        }
 
         $this->secondaAccoglienza = $secondaAccoglienza;
 
@@ -479,10 +468,6 @@ class Storia
 
     public function setValutazioneMultidisciplinare(ValutazioneMultidisciplinare $valutazioneMultidisciplinare): self
     {
-        // set the owning side of the relation if necessary
-        if ($valutazioneMultidisciplinare->getStoria() !== $this) {
-            $valutazioneMultidisciplinare->setStoria($this);
-        }
 
         $this->valutazioneMultidisciplinare = $valutazioneMultidisciplinare;
 

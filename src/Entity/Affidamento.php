@@ -51,12 +51,6 @@ class Affidamento
      */
     private $provvedimentoAffidamentoDefinitivo;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Amministrativa::class, inversedBy="affidamento", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $amministrativa;
-
 
 
     public function getId(): ?int
@@ -120,18 +114,6 @@ class Affidamento
     public function setProvvedimentoAffidamentoDefinitivo(?Allegato $provvedimentoAffidamentoDefinitivo): self
     {
         $this->provvedimentoAffidamentoDefinitivo = $provvedimentoAffidamentoDefinitivo;
-
-        return $this;
-    }
-
-    public function getAmministrativa(): ?Amministrativa
-    {
-        return $this->amministrativa;
-    }
-
-    public function setAmministrativa(Amministrativa $amministrativa): self
-    {
-        $this->amministrativa = $amministrativa;
 
         return $this;
     }

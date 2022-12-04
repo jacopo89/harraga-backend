@@ -46,16 +46,16 @@ class Amministrativa
     private $provvedimentoGiudiziarios;
 
     /**
-     * @ORM\OneToOne(targetEntity=RiferimentoLegale::class, mappedBy="amministrativa", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=RiferimentoLegale::class, cascade={"persist", "remove"})
      * @Groups({"amministrativa"})
      */
     private $riferimentoLegale;
 
     /**
-     * @ORM\OneToOne(targetEntity=RevocaTutela::class, mappedBy="amministrativa", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=RevocaTutela::class, cascade={"persist", "remove"})
      * @Groups({"amministrativa"})
      */
-    private $revocaTutela;
+    private ?RevocaTutela $revocaTutela;
 
     /**
      * @ORM\OneToOne(targetEntity=Allegato::class, cascade={"persist", "remove"})
@@ -88,25 +88,26 @@ class Amministrativa
     private $documentoIdentitaAmministrativas;
 
     /**
-     * @ORM\OneToOne(targetEntity=FotoSegnalazione::class, mappedBy="amministrativa", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=FotoSegnalazione::class,  cascade={"persist", "remove"})
      * @Groups({"amministrativa"})
      */
     private $fotoSegnalazione;
 
     /**
-     * @ORM\OneToOne(targetEntity=ProseguimentoAmministrativo::class, mappedBy="amministrativa", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=ProseguimentoAmministrativo::class, cascade={"persist", "remove"})
      * @Groups({"amministrativa"})
      */
     private $proseguimentoAmministrativo;
 
     /**
-     * @ORM\OneToOne(targetEntity=Affidamento::class, mappedBy="amministrativa", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Affidamento::class, cascade={"persist", "remove"})
      * @Groups({"amministrativa"})
      */
     private $affidamento;
 
     /**
-     * @ORM\OneToMany(targetEntity=ProceduraLegale::class, mappedBy="amministrativa", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=ProceduraLegale::class, mappedBy="amministrativa", orphanRemoval=true,cascade={"persist", "remove"})
+     * @Groups({"amministrativa"})
      */
     private $proceduraLegales;
 
@@ -207,13 +208,8 @@ class Amministrativa
         return $this->riferimentoLegale;
     }
 
-    public function setRiferimentoLegale(RiferimentoLegale $riferimentoLegale): self
+    public function setRiferimentoLegale(?RiferimentoLegale $riferimentoLegale): self
     {
-        // set the owning side of the relation if necessary
-        if ($riferimentoLegale->getAmministrativa() !== $this) {
-            $riferimentoLegale->setAmministrativa($this);
-        }
-
         $this->riferimentoLegale = $riferimentoLegale;
 
         return $this;
@@ -224,13 +220,8 @@ class Amministrativa
         return $this->revocaTutela;
     }
 
-    public function setRevocaTutela(RevocaTutela $revocaTutela): self
+    public function setRevocaTutela(?RevocaTutela $revocaTutela): self
     {
-        // set the owning side of the relation if necessary
-        if ($revocaTutela->getAmministrativa() !== $this) {
-            $revocaTutela->setAmministrativa($this);
-        }
-
         $this->revocaTutela = $revocaTutela;
 
         return $this;
@@ -319,13 +310,8 @@ class Amministrativa
         return $this->fotoSegnalazione;
     }
 
-    public function setFotoSegnalazione(FotoSegnalazione $fotoSegnalazione): self
+    public function setFotoSegnalazione(?FotoSegnalazione $fotoSegnalazione): self
     {
-        // set the owning side of the relation if necessary
-        if ($fotoSegnalazione->getAmministrativa() !== $this) {
-            $fotoSegnalazione->setAmministrativa($this);
-        }
-
         $this->fotoSegnalazione = $fotoSegnalazione;
 
         return $this;
@@ -336,13 +322,8 @@ class Amministrativa
         return $this->proseguimentoAmministrativo;
     }
 
-    public function setProseguimentoAmministrativo(ProseguimentoAmministrativo $proseguimentoAmministrativo): self
+    public function setProseguimentoAmministrativo(?ProseguimentoAmministrativo $proseguimentoAmministrativo): self
     {
-        // set the owning side of the relation if necessary
-        if ($proseguimentoAmministrativo->getAmministrativa() !== $this) {
-            $proseguimentoAmministrativo->setAmministrativa($this);
-        }
-
         $this->proseguimentoAmministrativo = $proseguimentoAmministrativo;
 
         return $this;
@@ -353,13 +334,8 @@ class Amministrativa
         return $this->affidamento;
     }
 
-    public function setAffidamento(Affidamento $affidamento): self
+    public function setAffidamento(?Affidamento $affidamento): self
     {
-        // set the owning side of the relation if necessary
-        if ($affidamento->getAmministrativa() !== $this) {
-            $affidamento->setAmministrativa($this);
-        }
-
         $this->affidamento = $affidamento;
 
         return $this;

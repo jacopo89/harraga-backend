@@ -39,11 +39,6 @@ class FotoSegnalazione
      */
     private $allegato;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Amministrativa::class, inversedBy="fotoSegnalazione", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $amministrativa;
 
     public function getId(): ?int
     {
@@ -82,18 +77,6 @@ class FotoSegnalazione
     public function setAllegato(?Allegato $allegato): self
     {
         $this->allegato = $allegato;
-
-        return $this;
-    }
-
-    public function getAmministrativa(): ?Amministrativa
-    {
-        return $this->amministrativa;
-    }
-
-    public function setAmministrativa(Amministrativa $amministrativa): self
-    {
-        $this->amministrativa = $amministrativa;
 
         return $this;
     }

@@ -54,7 +54,7 @@ class CartellaSociale
     /**
      * @ORM\OneToOne(targetEntity=Anagrafica::class, mappedBy="cartellaSociale", cascade={"persist", "remove"})
      * @ApiSubresource
-     * @Groups ({"cartella"})
+     * @Groups ({"cartella","cartella_sociale_utente"})
      */
     private Anagrafica $anagrafica;
 
