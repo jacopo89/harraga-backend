@@ -52,7 +52,7 @@ class RicorsoAmministrativo
     private $dateUdienze = [];
 
     /**
-     * @ORM\ManyToOne(targetEntity=ProceduraLegale::class, inversedBy="ricorsiAmministrativi")
+     * @ORM\ManyToOne(targetEntity=ProceduraLegale::class, inversedBy="ricorsoAmministrativos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $proceduraLegale;

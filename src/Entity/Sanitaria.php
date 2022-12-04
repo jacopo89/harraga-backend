@@ -45,13 +45,13 @@ class Sanitaria
     private $patologiaAllergicas;
 
     /**
-     * @ORM\OneToOne(targetEntity=MedicoCurante::class, mappedBy="sanitaria", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=MedicoCurante::class, cascade={"persist", "remove"},orphanRemoval=true)
      * @Groups({"sanitaria"})
      */
     private $medicoCurante;
 
     /**
-     * @ORM\OneToOne(targetEntity=PresoInCarico::class, mappedBy="sanitaria", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=PresoInCarico::class, cascade={"persist", "remove"},orphanRemoval=true)
      * @Groups({"sanitaria"})
      */
     private $presoInCarico;
@@ -165,13 +165,8 @@ class Sanitaria
         return $this->medicoCurante;
     }
 
-    public function setMedicoCurante(MedicoCurante $medicoCurante): self
+    public function setMedicoCurante(?MedicoCurante $medicoCurante): self
     {
-        // set the owning side of the relation if necessary
-        if ($medicoCurante->getSanitaria() !== $this) {
-            $medicoCurante->setSanitaria($this);
-        }
-
         $this->medicoCurante = $medicoCurante;
 
         return $this;
@@ -182,15 +177,9 @@ class Sanitaria
         return $this->presoInCarico;
     }
 
-    public function setPresoInCarico(PresoInCarico $presoInCarico): self
+    public function setPresoInCarico(?PresoInCarico $presoInCarico): self
     {
-        // set the owning side of the relation if necessary
-        if ($presoInCarico->getSanitaria() !== $this) {
-            $presoInCarico->setSanitaria($this);
-        }
-
         $this->presoInCarico = $presoInCarico;
-
         return $this;
     }
 

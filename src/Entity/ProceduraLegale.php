@@ -39,7 +39,7 @@ class ProceduraLegale
      * @ORM\OneToMany(targetEntity=RicorsoAmministrativo::class, mappedBy="proceduraLegale", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"amministrativa"})
      */
-    private $ricorsiAmministrativi;
+    private $ricorsoAmministrativos;
 
     /**
      * @ORM\ManyToOne(targetEntity=Amministrativa::class, inversedBy="proceduraLegales")
@@ -50,7 +50,7 @@ class ProceduraLegale
     public function __construct()
     {
         $this->appuntamentos = new ArrayCollection();
-        $this->ricorsiAmministrativi = new ArrayCollection();
+        $this->ricorsoAmministrativos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -103,24 +103,24 @@ class ProceduraLegale
     /**
      * @return Collection<int, RicorsoAmministrativo>
      */
-    public function getRicorsiAmministrativi(): Collection
+    public function getRicorsoAmministrativos(): Collection
     {
-        return $this->ricorsiAmministrativi;
+        return $this->ricorsoAmministrativos;
     }
 
-    public function addRicorsiAmministrativi(RicorsoAmministrativo $ricorsiAmministrativi): self
+    public function addRicorsoAmministrativo(RicorsoAmministrativo $ricorsiAmministrativi): self
     {
-        if (!$this->ricorsiAmministrativi->contains($ricorsiAmministrativi)) {
-            $this->ricorsiAmministrativi[] = $ricorsiAmministrativi;
+        if (!$this->ricorsoAmministrativos->contains($ricorsiAmministrativi)) {
+            $this->ricorsoAmministrativos[] = $ricorsiAmministrativi;
             $ricorsiAmministrativi->setProceduraLegale($this);
         }
 
         return $this;
     }
 
-    public function removeRicorsiAmministrativi(RicorsoAmministrativo $ricorsiAmministrativi): self
+    public function removeRicorsoAmministrativo(RicorsoAmministrativo $ricorsiAmministrativi): self
     {
-        if ($this->ricorsiAmministrativi->removeElement($ricorsiAmministrativi)) {
+        if ($this->ricorsoAmministrativos->removeElement($ricorsiAmministrativi)) {
             // set the owning side to null (unless already changed)
             if ($ricorsiAmministrativi->getProceduraLegale() === $this) {
                 $ricorsiAmministrativi->setProceduraLegale(null);

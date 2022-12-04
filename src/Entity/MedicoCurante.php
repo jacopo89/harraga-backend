@@ -51,12 +51,6 @@ class MedicoCurante
      */
     private $allegato;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Sanitaria::class, inversedBy="medicoCurante", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sanitaria;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -118,18 +112,6 @@ class MedicoCurante
     public function setAllegato(?Allegato $allegato): self
     {
         $this->allegato = $allegato;
-
-        return $this;
-    }
-
-    public function getSanitaria(): ?Sanitaria
-    {
-        return $this->sanitaria;
-    }
-
-    public function setSanitaria(Sanitaria $sanitaria): self
-    {
-        $this->sanitaria = $sanitaria;
 
         return $this;
     }

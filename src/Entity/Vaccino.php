@@ -33,6 +33,12 @@ class Vaccino
      */
     private $sanitaria;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Allegato::class, cascade={"persist", "remove"})
+     *  @Groups({"sanitaria"})
+     */
+    private $allegato;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,6 +64,18 @@ class Vaccino
     public function setSanitaria(?Sanitaria $sanitaria): self
     {
         $this->sanitaria = $sanitaria;
+
+        return $this;
+    }
+
+    public function getAllegato(): ?Allegato
+    {
+        return $this->allegato;
+    }
+
+    public function setAllegato(?Allegato $allegato): self
+    {
+        $this->allegato = $allegato;
 
         return $this;
     }

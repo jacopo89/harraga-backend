@@ -46,16 +46,10 @@ class PresoInCarico
     private $telefono;
 
     /**
-     * @ORM\OneToOne(targetEntity=Allegato::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Allegato::class, cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"sanitaria"})
      */
     private $allegato;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Sanitaria::class, inversedBy="presoInCarico", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sanitaria;
 
     public function getId(): ?int
     {
@@ -118,18 +112,6 @@ class PresoInCarico
     public function setAllegato(?Allegato $allegato): self
     {
         $this->allegato = $allegato;
-
-        return $this;
-    }
-
-    public function getSanitaria(): ?Sanitaria
-    {
-        return $this->sanitaria;
-    }
-
-    public function setSanitaria(Sanitaria $sanitaria): self
-    {
-        $this->sanitaria = $sanitaria;
 
         return $this;
     }
