@@ -34,14 +34,14 @@ class Penale
     private $cartellaSociale;
 
     /**
-     * @ORM\OneToMany(targetEntity=ProceduraPenale::class, mappedBy="penale", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=ProceduraPenale::class, mappedBy="penale", orphanRemoval=true, cascade={"persist", "remove"})
      * @Groups ({"penale"})
      */
-    private $procedurePenali;
+    private $proceduraPenales;
 
     public function __construct()
     {
-        $this->procedurePenali = new ArrayCollection();
+        $this->proceduraPenales = new ArrayCollection();
     }
 
     public static function fromCartellaSociale(CartellaSociale $cartellaSociale)
@@ -71,24 +71,24 @@ class Penale
     /**
      * @return Collection<int, ProceduraPenale>
      */
-    public function getProcedurePenali(): Collection
+    public function getProceduraPenales(): Collection
     {
-        return $this->procedurePenali;
+        return $this->proceduraPenales;
     }
 
-    public function addProcedurePenali(ProceduraPenale $procedurePenali): self
+    public function addProceduraPenale(ProceduraPenale $procedurePenali): self
     {
-        if (!$this->procedurePenali->contains($procedurePenali)) {
-            $this->procedurePenali[] = $procedurePenali;
+        if (!$this->proceduraPenales->contains($procedurePenali)) {
+            $this->proceduraPenales[] = $procedurePenali;
             $procedurePenali->setPenale($this);
         }
 
         return $this;
     }
 
-    public function removeProcedurePenali(ProceduraPenale $procedurePenali): self
+    public function removeProceduraPenale(ProceduraPenale $procedurePenali): self
     {
-        if ($this->procedurePenali->removeElement($procedurePenali)) {
+        if ($this->proceduraPenales->removeElement($procedurePenali)) {
             // set the owning side to null (unless already changed)
             if ($procedurePenali->getPenale() === $this) {
                 $procedurePenali->setPenale(null);
