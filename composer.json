@@ -17,6 +17,7 @@
         "doctrine/orm": "^2.7",
         "jacopo89/file-handler-bundle": "dev-main",
         "jacopo89/model-generator-bundle": "dev-main",
+        "league/csv": "^9.8",
         "lexik/jwt-authentication-bundle": "2.11.2",
         "liip/imagine-bundle": "2.x-dev",
         "nelmio/cors-bundle": "^2.2",

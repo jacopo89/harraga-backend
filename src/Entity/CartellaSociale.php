@@ -107,7 +107,7 @@ class CartellaSociale
     private Socialita $socialita;
 
     /**
-     * @ORM\OneToMany(targetEntity=UtenteCartellaSociale::class, mappedBy="cartellaSociale")
+     * @ORM\OneToMany(targetEntity=UtenteCartellaSociale::class, mappedBy="cartellaSociale",cascade={"persist","remove"})
      */
     private $utenteCartellaSociales;
 

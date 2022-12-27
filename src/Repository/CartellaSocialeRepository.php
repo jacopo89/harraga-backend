@@ -47,4 +47,18 @@ class CartellaSocialeRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function save(CartellaSociale $cartella)
+    {
+        $this->_em->persist($cartella);
+        $this->_em->flush();
+    }
+
+    public function persist(CartellaSociale $cartella)
+    {
+        $this->_em->persist($cartella);
+    }
+
+    public function flush(){
+        $this->_em->flush();
+    }
 }
